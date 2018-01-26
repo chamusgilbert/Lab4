@@ -6,19 +6,20 @@ namespace Lab4
     {
         static void Main(string[] args)
         {
-            int factor = 1;
+            long factor = 1;
             Factoring(factor);
         }
-        public static void Factoring(int factor)
+        public static void Factoring(long factor)
         {
             Console.WriteLine("Give me a number between 1 and 10.");
-            bool goodNum = Int32.TryParse(Console.ReadLine(), out int userNum);
+
+            bool goodNum = Int64.TryParse(Console.ReadLine(), out long userNum);
             if (goodNum == false)
             {
                 Console.WriteLine("Try again");
                 Factoring(factor);
             }
-            else if (userNum > 10 || userNum < 1)
+            else if (userNum >= 10 || userNum <= 1)
             {
                 Console.WriteLine("Try again");
                 Factoring(factor);
@@ -28,8 +29,8 @@ namespace Lab4
                 int i = 1;
                 while (i <= userNum)
                 {
-                    factor = i * factor;
-
+                    factor = i * factor; // factor *= i;
+                    Console.WriteLine(factor);
                     i++;
                 }
                 Console.WriteLine("The factor of your number is: " + factor);
